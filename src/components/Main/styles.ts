@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  animation: fadeIn 1s ease-out;
   header{
     display: flex;
     justify-content: space-between;
@@ -34,6 +35,7 @@ export const Container = styled.div`
         font-size: 0.75rem;
         line-height: 20px;
         cursor: pointer;
+        transition: background-color 0.8s ease-in-out;
 
         svg path{
           fill: ${(props) => props.theme.colors['primary-850']};
@@ -71,6 +73,7 @@ export const Container = styled.div`
     background-color: ${(props) => props.theme.colors['primary-100']};
     border-radius: 20px;
     box-shadow: 0px 3px 20px ${(props) => props.theme.colors['box-shadow']};
+    transition: background-color 0.8s ease-in-out;
 
     .box-resume, .box-Portfolio{
       padding: 32px 60px;
@@ -239,6 +242,15 @@ export const Container = styled.div`
     
     section{
       height: auto;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 `;
