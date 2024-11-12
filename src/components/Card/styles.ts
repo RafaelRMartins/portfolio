@@ -1,124 +1,162 @@
 import styled from 'styled-components';
-import * as Dialog from '@radix-ui/react-dialog';
-
-export const Overlay = styled(Dialog.Overlay)`
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  inset: 0;
-`
-
-export const DialogContent = styled(Dialog.Content)`
-  background-color: ${(props) => props.theme['primary-100']};
-  box-shadow: 0 0 0 2px ${(props) => props.theme['second-800']};
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;
-  max-width: 1180px;
-  max-height: 85vh;
-  display: grid;
-  grid-template-columns: 4fr 3fr;
-  
-  .slider{
-    background-color: ${(props) => props.theme['second-900']};
-    max-height: 85vh;
-    display: flex;
-    justify-content: center;
-    position: relative;
-
-    img{
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    button{
-      all: unset;
-      display: block;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      padding: 1rem;
-      cursor: pointer;
-      transition: background-color 100ms ease-in-out;
-      color: ${(props) => props.theme['second-100']};
-
-      &:hover{
-        background-color: rgba(0, 0, 0, 0.2);
-      }
-    }
-
-  }
-  
-  .about{
-    overflow-y: auto;
-    padding: 32px;
-    color: ${(props) => props.theme['second-900']};
-    max-height: 85vh;
-    
-    a{
-      text-decoration: none;
-      color: ${(props) => props.theme['primary-700']};
-  
-      &:hover{
-        color: ${(props) => props.theme['primary-800']};
-      }
-    }
-
-    p{
-      margin-top: 16px;
-    }
-  }
-`
 
 export const Container = styled.div`
-  max-width: 380px;
-  height: 460px;
+  margin-top: 100px;
+  width: 400px;
+  height: 700px;
+  background-color: ${(props) => props.theme.colors['primary-100']};
+  box-shadow: 0px 3px 20px ${(props) => props.theme.colors['box-shadow']};
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 20px;
-  background-color: ${(props) => props.theme['second-900']};
-  border-radius: 8px;
-  border: 1px solid ${(props) => props.theme['second-700']};
+  justify-content: center;
+  position: relative;
+  animation: fadeIn 1s ease-out;
+  transition: background-color 0.8s ease-in-out;
 
-  @media(max-width: 780px){
-    button{
+  .Foto{
+    top: -100px;
+    left: 25%;
+    position: absolute;
+    border-radius: 20px;
+  }
+
+  .switchTheme{
+    position: absolute;
+    top: -30px;
+    right: 6px;
+  }
+  @media (min-width: 1240px) {
+    .switchTheme{
       display: none;
     }
   }
 
-  img{
-    width: 100%;
-    height: 240px;
-    border-radius: 4px;
-  }
-
-  h3{
-    font-size: 1.5rem;
-    color: ${(props) => props.theme['primary-100']};
-  }
-
-  p{
+  .title{
+    margin-top: 18px;
     text-align: center;
-    color: ${(props) => props.theme['primary-200']};
+
+    h2{
+      margin-top: 114px;
+      color: ${(props) => props.theme.colors['primary-800']};
+      font-size: 1.776rem;
+      font-weight: 700;
+      line-height: 35.5px;
+    }
+
+    span{
+      margin-top: 4px;
+      color: ${(props) => props.theme.colors['primary-850']};
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 40px;
+    }
   }
 
-  button{
-    cursor: pointer;
-    border: none;
-    margin-right: auto;
-    text-decoration: none;
-    color: ${(props) => props.theme['primary-100']};
-    background-color: ${(props) => props.theme['primary-700']};
-    border-radius: 12px;
-    padding: 8px 14px;
+  ul{
+    margin-top: 6px;
+    display: flex;
+    gap: 10px;
+  }
 
-    &:hover{
-      color: ${(props) => props.theme['primary-200']};
-      background-color: ${(props) => props.theme['primary-800']};
+  ul, li {
+    list-style: none;
+
+    a{
+      display: block;
+      background-color: ${(props) => props.theme.colors['primary-200']};
+      border-radius: 8px;
+      padding: 20px 24px;
+      transition: background-color 0.8s ease-in-out;
+
+
+      &:hover {
+        background-color: ${(props) => props.theme.colors['primary-825']};
+        transition: background-color 0.3s ease;
+      }
+    }
+  }
+
+  section{
+    margin-top: 22px;
+    background-color: ${(props) => props.theme.colors['primary-200']};
+    padding: 28px;
+    border-radius: 20px;
+    margin-bottom: 66px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    transition: background-color 0.8s ease-in-out;
+
+    .box{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+
+      hr{
+        border: 0;
+        height: 2px;
+        background-color: ${(props) => props.theme.colors['primary-300']};
+        transition: background-color 0.8s ease-in-out;
+      }
+
+      .box-info{
+        display: flex;
+        gap: 10px;
+
+        img{
+          padding: 0 10px;
+        }
+
+        div{
+          p{
+            color: ${(props) => props.theme.colors['primary-850']};
+            font-size: 0.875rem;
+            font-weight: 600;
+          }
+          span{
+            color: ${(props) => props.theme.colors['primary-800']};
+            font-size: 0.875rem;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    a{
+      padding: 12px 20px;
+      border-radius: 20px;
+      background: linear-gradient(130deg, ${(props) => props.theme.colors['second-200']} 0%, ${(props) => props.theme.colors['second-700']} 100%);
+      background-size: 200% 200%;
+      background-position: 0% 50%;
+      text-decoration: none;
+      color: ${(props) => props.theme.colors['white']};
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: background-position 0.4s ease;
+
+      &:hover {
+        background-position: 100% 50%;
+      }
+    }
+  }
+
+  @media (max-width: 1240px) {
+    margin-top: 120px;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 `;

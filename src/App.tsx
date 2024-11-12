@@ -1,18 +1,23 @@
 import { ThemeProvider } from 'styled-components'
-import { defaultTheme } from './styles/themes/default'
+import { light } from './styles/themes/light'
+import { dark } from './styles/themes/dark'
 import { GlobalStyle } from './styles/global'
-import { Header } from './components/Header'
-import { Footer } from './components/Footer'
 import { Home } from './page/Home'
+import usePersistedState from './utils/usePersistedState'
+import { DefaultTheme } from 'styled-components/dist/types'
 
 export function App() {
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme');
+
+  const toggleTheme = () =>{
+    setTheme(theme.title == 'light' ? dark : light)
+  }
+
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
 
-      <Header/>
-      <Home />
-      <Footer/>
+      <Home toggleTheme={toggleTheme} />
     </ThemeProvider>
   )
 }
